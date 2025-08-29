@@ -1,0 +1,261 @@
+---
+---
+<nav class="menupc">
+        <div class="logo">
+            <img src="conectoLogo.png" alt="Conecto Logo">
+        </div>
+        
+        <!-- Botón hamburguesa para móvil -->
+        <button class="menu-toggle" id="menuToggle">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+        
+        <!-- Menú de navegación -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="/about">Acerca de</a></li>
+            <li><a href="/courses">Cursos</a></li>
+            <li><a href="">Testimonios</a></li>
+            <li><a href="/contact">Contacto</a></li>
+            <li><a href="">Preguntas frecuentes</a></li>
+        </ul>
+    </nav>
+
+<style>
+    nav.menupc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #174A63;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1000;
+    }
+    nav.menupc img {
+        height: 60px;
+        width: auto;
+    }
+    nav.menupc ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+    nav.menupc ul li a {
+        color: #F5F5F3;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s, border-bottom 0.3s;
+        font-size: 17px;
+        font-family: 'Delius', sans-serif;
+        position: relative; 
+    }
+    nav.menupc ul li a::after {
+        content: '';
+        position: absolute;
+        left: 40%;
+        bottom: 0;
+        width: 0;
+        height: 2px; /* grosor de la línea */
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+    nav.menupc ul li a:hover::after {
+        left: 0;
+        width: 100%;
+    }
+    .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+    .nav-menu li a{
+        color: #F5F5F3;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s, border-bottom 0.3s;
+        font-size: 17px;
+        font-family: 'Delius', sans-serif;
+        position: relative; 
+        padding: 0.5rem 0;
+        white-space: nowrap;
+    }
+    .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            left: 40%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a:hover::after {
+            left: 0;
+            width: 100%;
+        }
+
+        .nav-menu li a:hover {
+            color: #ffffff;
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background-color: #F5F5F3;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Animación del botón hamburguesa cuando está activo */
+        .menu-toggle.active .hamburger:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .hamburger:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            nav.menupc {
+                padding: 1rem;
+                position: relative;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: #174A63;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(245, 245, 243, 0.1);
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu li a {
+                font-size: 18px;
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .nav-menu li a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-menu li a:hover::after {
+                left: 100%;
+                transform: translateX(-50%);
+                width: 100%;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media screen and (max-width: 480px) {
+            nav.menupc {
+                padding: 0.8rem;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .nav-menu li a {
+                font-size: 16px;
+                padding: 0.8rem;
+            }
+
+            .nav-menu {
+                top: 65px;
+            }
+        }
+
+        /* Para tablets */
+        @media screen and (max-width: 1024px) and (min-width: 769px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .nav-menu li a {
+                font-size: 16px;
+            }
+        }
+</style>
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace (móvil)
+        const navLinks = document.querySelectorAll('.nav-menu li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al cambiar el tamaño de ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+</script>
