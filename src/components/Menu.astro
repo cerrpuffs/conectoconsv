@@ -1,126 +1,189 @@
 ---
 ---
-<nav class="menupc">
-        <div class="logo">
-            <img src="/conectoLogo.png" alt="Conecto Logo">
+<div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <img src="/conectoLogo.png" alt="Conecto Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-fallback" style="display: none;">CONECTO</div>
+            </div>
+            
+            <!-- Botón hamburguesa -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">
+                        <i class="fas fa-info-circle nav-icon"></i>
+                        Acerca de
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/courses" class="nav-link">
+                        <i class="fas fa-graduation-cap nav-icon"></i>
+                        Cursos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/testimonios" class="nav-link">
+                        <i class="fas fa-star nav-icon"></i>
+                        Testimonios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        Contacto
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/faq" class="nav-link">
+                        <i class="fas fa-question-circle nav-icon"></i>
+                        Preguntas frecuentes
+                    </a>
+                </li>
+                
+                <!-- Redes sociales (solo visibles en móvil) -->
+                <li class="nav-item mobile-only">
+                    <div class="social-section">
+                        <p class="social-text">Síguenos en nuestras redes sociales</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn instagram" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-btn whatsapp" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        
-        <!-- Botón hamburguesa para móvil -->
-        <button class="menu-toggle" id="menuToggle">
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-        </button>
-        
-        <!-- Menú de navegación -->
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="/about">Acerca de</a></li>
-            <li><a href="/courses">Cursos</a></li>
-            <li><a href="">Testimonios</a></li>
-            <li><a href="/contact">Contacto</a></li>
-            <li><a href="">Preguntas frecuentes</a></li>
-            <div class="btns">
-                <a href="" class="btn"><i class="fa-brands fa-instagram"></i></a>
-                <a href="" class="btn"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="text">
-                siguenos en nuestras redes sociales
-            </div>
-
-
-        </ul>
-
     </nav>
-
 <style>
-    .btn{
-        display: none;
-    }
-    .text{
-        display: none;
-    }
-    nav.menupc {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background-color: #174A63;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 1000;
-    }
-    nav.menupc img {
-        height: 60px;
-        width: auto;
-    }
-    nav.menupc ul {
-        list-style: none;
-        display: flex;
-        gap: 1.5rem;
-        margin: 0;
-        padding: 0;
-    }
-    nav.menupc ul li a {
-        color: #F5F5F3;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s, border-bottom 0.3s;
-        font-size: 17px;
-        font-family: 'Delius', sans-serif;
-        position: relative; 
-    }
-    nav.menupc ul li a::after {
-        content: '';
-        position: absolute;
-        left: 40%;
-        bottom: 0;
-        width: 0;
-        height: 2px; /* grosor de la línea */
-        background-color: white;
-        transition: all 0.3s ease;
-    }
-
-    nav.menupc ul li a:hover::after {
-        left: 0;
-        width: 100%;
-    }
-    .nav-menu {
-        list-style: none;
-        display: flex;
-        gap: 1.5rem;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-    }
-    .nav-menu li a{
-        color: #F5F5F3;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s, border-bottom 0.3s;
-        font-size: 17px;
-        font-family: 'Delius', sans-serif;
-        position: relative; 
-        padding: 0.5rem 0;
-        white-space: nowrap;
-    }
-    .nav-menu li a::after {
-            content: '';
-            position: absolute;
-            left: 40%;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: white;
+        .navbar {
+            background: linear-gradient(135deg, #174A63 0%, #1e5a75 100%);
+            box-shadow: 0 4px 20px rgba(23, 74, 99, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .nav-menu li a:hover::after {
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
         }
 
-        .nav-menu li a:hover {
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Logo */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .nav-logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #F5F5F3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Menú de navegación */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #F5F5F3;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, #e0e0e0);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
             color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .nav-icon {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover .nav-icon {
+            transform: scale(1.1);
+        }
+
+        /* Elementos solo visibles en móvil */
+        .mobile-only {
+            display: none;
         }
 
         /* Botón hamburguesa */
@@ -132,63 +195,128 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
         }
 
-        .hamburger {
-            width: 25px;
+        .menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hamburger-line {
+            width: 28px;
             height: 3px;
-            background-color: #F5F5F3;
+            background: linear-gradient(90deg, #F5F5F3, #e0e0e0);
             margin: 3px 0;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border-radius: 2px;
+            transform-origin: center;
         }
 
-        /* Animación del botón hamburguesa cuando está activo */
-        .menu-toggle.active .hamburger:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
+        /* Animaciones del botón hamburguesa */
+        .menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
-        .menu-toggle.active .hamburger:nth-child(2) {
+        .menu-toggle.active .hamburger-line:nth-child(2) {
             opacity: 0;
+            transform: scale(0);
         }
 
-        .menu-toggle.active .hamburger:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
+        .menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Overlay para móvil */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Sección social para móvil */
+        .social-section {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        .social-text {
+            color: #F5F5F3;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-btn.whatsapp {
+            background: linear-gradient(45deg, #25d366 0%, #128c7e 100%);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .btn {
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-            font-size: 27px;
-            display: flex;
-            }
-            .btns {
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                margin-left: 20px;
-            }
-            .text {
-                font-size: 16px;
-                color: #F5F5F3;
-                margin-top: 5px;
-                text-align: center;
-                margin-bottom: 25px;
-                font-weight: normal;
-                display: block;
-            }
-            nav.menupc {
+            .nav-container {
                 padding: 1rem;
-                position: relative;
             }
 
-            .logo img {
+            .nav-logo img {
                 height: 50px;
             }
 
@@ -196,113 +324,251 @@
                 display: flex;
             }
 
-            .nav-menu {
-                position: fixed;
-                top: 0; /* Para que arranque desde arriba */
-                left: -100%;
-                flex-direction: column;
-                background-color: #174A63;
-                width: 100%;
-                display: flex;
-                height: 100vh; /* Ocupa toda la altura */
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 2rem 0;
-                gap: 0;
-                overflow-y: auto; /* Por si el contenido es más grande que la pantalla */
+            .mobile-only {
+                display: block;
             }
 
-            .btns {
-                margin-top: 120px;
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: linear-gradient(180deg, #174A63 0%, #1e5a75 100%);
+                flex-direction: column;
+                align-items: center;
+                padding: 6rem 0 2rem;
+                gap: 0;
+                transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+                z-index: 1000;
             }
+
             .nav-menu.active {
                 left: 0;
             }
 
-            .nav-menu li {
+            .nav-item {
                 width: 100%;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(245, 245, 243, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
-            .nav-menu li:last-child {
+            .nav-item:last-child {
                 border-bottom: none;
             }
 
-            .nav-menu li a {
-                font-size: 18px;
-                display: block;
-                padding: 1rem;
-                width: 100%;
+            .nav-link {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+                border-radius: 0;
+                justify-content: flex-start;
+                transition: all 0.3s ease;
             }
 
-            .nav-menu li a::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.15);
+                padding-left: 2.5rem;
+                transform: none;
             }
 
-            .nav-menu li a:hover::after {
-                left: 100%;
-                transform: translateX(-50%);
-                width: 100%;
+            .nav-link::before {
+                display: none;
+            }
+
+            .nav-icon {
+                font-size: 1.2rem;
+                min-width: 20px;
             }
         }
 
         /* Para pantallas muy pequeñas */
         @media screen and (max-width: 480px) {
-            nav.menupc {
+            .nav-container {
                 padding: 0.8rem;
             }
 
-            .logo img {
+            .nav-logo img {
                 height: 45px;
             }
 
-            .nav-menu li a {
-                font-size: 16px;
-                padding: 0.8rem;
+            .nav-menu {
+                width: 85%;
             }
 
-            .nav-menu {
-                top: 65px;
+            .nav-link {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-link:hover {
+                padding-left: 2rem;
             }
         }
 
         /* Para tablets */
         @media screen and (max-width: 1024px) and (min-width: 769px) {
             .nav-menu {
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
-            .nav-menu li a {
-                font-size: 16px;
+            .nav-link {
+                font-size: 1rem;
+                padding: 0.6rem 0.8rem;
             }
         }
-</style>
-<script>
-    const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
 
-        menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Cerrar menú al hacer click en un enlace (móvil)
-        const navLinks = document.querySelectorAll('.nav-menu li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Cerrar menú al cambiar el tamaño de ventana
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+        /* Animación de carga */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar {
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script>
+    class NavigationMenu {
+            constructor() {
+                this.menuToggle = document.getElementById('menuToggle');
+                this.navMenu = document.getElementById('navMenu');
+                this.menuOverlay = document.getElementById('menuOverlay');
+                this.navLinks = document.querySelectorAll('.nav-link');
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.handleResize();
+            }
+
+            bindEvents() {
+                // Toggle del menú
+                this.menuToggle?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.toggleMenu();
+                });
+
+                // Cerrar menú con overlay
+                this.menuOverlay?.addEventListener('click', () => {
+                    this.closeMenu();
+                });
+
+                // Cerrar menú al hacer clic en enlaces
+                this.navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        // Si es un enlace interno (empieza con # o es relativo)
+                        const href = link.getAttribute('href');
+                        if (href && (href.startsWith('#') || !href.startsWith('http'))) {
+                            this.closeMenu();
+                        }
+                    });
+                });
+
+                // Manejar redimensionado de ventana
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+
+                // Cerrar menú con tecla Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeMenu();
+                    }
+                });
+
+                // Prevenir scroll cuando el menú está abierto en móvil
+                this.navMenu?.addEventListener('transitionend', () => {
+                    if (this.isMenuOpen()) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            toggleMenu() {
+                const isActive = this.menuToggle?.classList.contains('active');
+                
+                if (isActive) {
+                    this.closeMenu();
+                } else {
+                    this.openMenu();
+                }
+            }
+
+            openMenu() {
+                this.menuToggle?.classList.add('active');
+                this.navMenu?.classList.add('active');
+                this.menuOverlay?.classList.add('active');
+                this.menuToggle?.setAttribute('aria-expanded', 'true');
+                
+                // Enfocar el primer enlace del menú para accesibilidad
+                setTimeout(() => {
+                    const firstLink = this.navMenu?.querySelector('.nav-link');
+                    firstLink?.focus();
+                }, 300);
+            }
+
+            closeMenu() {
+                this.menuToggle?.classList.remove('active');
+                this.navMenu?.classList.remove('active');
+                this.menuOverlay?.classList.remove('active');
+                this.menuToggle?.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            isMenuOpen() {
+                return this.navMenu?.classList.contains('active');
+            }
+
+            handleResize() {
+                if (window.innerWidth > 768 && this.isMenuOpen()) {
+                    this.closeMenu();
+                }
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationMenu();
+        });
+
+        // Efecto de scroll en el navbar
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar?.classList.remove('scroll-up');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !navbar?.classList.contains('scroll-down')) {
+                // Scrolling down
+                navbar?.classList.remove('scroll-up');
+                navbar?.classList.add('scroll-down');
+            } else if (currentScroll < lastScroll && navbar?.classList.contains('scroll-down')) {
+                // Scrolling up
+                navbar?.classList.remove('scroll-down');
+                navbar?.classList.add('scroll-up');
+            }
+            lastScroll = currentScroll;
         });
 </script>
